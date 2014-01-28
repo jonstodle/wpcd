@@ -1,0 +1,22 @@
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Debug\UpdateTileCountAgent.dll
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Debug\UpdateTileCountAgent.pdb
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Debug\Xkcd.dll
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Debug\Newtonsoft.Json.dll
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Debug\WP8AsyncWebClient.dll
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Debug\Xkcd.pdb
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Debug\Newtonsoft.Json.xml
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Debug\WP8AsyncWebClient.pdb
+C:\Dev\wpcd\UpdateTileCountAgent\obj\Debug\UpdateTileCountAgent.csprojResolveAssemblyReference.cache
+C:\Dev\wpcd\UpdateTileCountAgent\obj\Debug\UpdateTileCountAgent.dll
+C:\Dev\wpcd\UpdateTileCountAgent\obj\Debug\UpdateTileCountAgent.pdb
+C:\Dev\wpcd - Copy\UpdateTileCountAgent\Bin\Debug\UpdateTileCountAgent.dll
+C:\Dev\wpcd - Copy\UpdateTileCountAgent\Bin\Debug\UpdateTileCountAgent.pdb
+C:\Dev\wpcd - Copy\UpdateTileCountAgent\Bin\Debug\Xkcd.dll
+C:\Dev\wpcd - Copy\UpdateTileCountAgent\Bin\Debug\Newtonsoft.Json.dll
+C:\Dev\wpcd - Copy\UpdateTileCountAgent\Bin\Debug\WP8AsyncWebClient.dll
+C:\Dev\wpcd - Copy\UpdateTileCountAgent\Bin\Debug\Xkcd.pdb
+C:\Dev\wpcd - Copy\UpdateTileCountAgent\Bin\Debug\Newtonsoft.Json.xml
+C:\Dev\wpcd - Copy\UpdateTileCountAgent\Bin\Debug\WP8AsyncWebClient.pdb
+C:\Dev\wpcd - Copy\UpdateTileCountAgent\obj\Debug\UpdateTileCountAgent.csprojResolveAssemblyReference.cache
+C:\Dev\wpcd - Copy\UpdateTileCountAgent\obj\Debug\UpdateTileCountAgent.dll
+C:\Dev\wpcd - Copy\UpdateTileCountAgent\obj\Debug\UpdateTileCountAgent.pdb

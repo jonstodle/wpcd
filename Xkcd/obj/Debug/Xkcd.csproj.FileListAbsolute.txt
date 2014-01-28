@@ -1,0 +1,9 @@
+C:\Dev\wpcd\Xkcd\Bin\Debug\Xkcd.dll
+C:\Dev\wpcd\Xkcd\Bin\Debug\Xkcd.pdb
+C:\Dev\wpcd\Xkcd\Bin\Debug\Newtonsoft.Json.dll
+C:\Dev\wpcd\Xkcd\Bin\Debug\WP8AsyncWebClient.dll
+C:\Dev\wpcd\Xkcd\Bin\Debug\Newtonsoft.Json.xml
+C:\Dev\wpcd\Xkcd\Bin\Debug\WP8AsyncWebClient.pdb
+C:\Dev\wpcd\Xkcd\obj\Debug\Xkcd.csprojResolveAssemblyReference.cache
+C:\Dev\wpcd\Xkcd\obj\Debug\Xkcd.dll
+C:\Dev\wpcd\Xkcd\obj\Debug\Xkcd.pdb

@@ -1,0 +1,11 @@
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Release\UpdateTileCountAgent.dll
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Release\UpdateTileCountAgent.pdb
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Release\Xkcd.dll
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Release\Newtonsoft.Json.dll
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Release\WP8AsyncWebClient.dll
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Release\Xkcd.pdb
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Release\Newtonsoft.Json.xml
+C:\Dev\wpcd\UpdateTileCountAgent\Bin\Release\WP8AsyncWebClient.pdb
+C:\Dev\wpcd\UpdateTileCountAgent\obj\Release\UpdateTileCountAgent.csprojResolveAssemblyReference.cache
+C:\Dev\wpcd\UpdateTileCountAgent\obj\Release\UpdateTileCountAgent.dll
+C:\Dev\wpcd\UpdateTileCountAgent\obj\Release\UpdateTileCountAgent.pdb

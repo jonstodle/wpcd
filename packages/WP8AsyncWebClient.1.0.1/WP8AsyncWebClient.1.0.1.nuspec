@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>WP8AsyncWebClient</id>
+    <version>1.0.1</version>
+    <title>WP8 Async WebClient</title>
+    <authors>bc3tech</authors>
+    <owners>bc3tech</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A package that adds the async/await TPL capabilities to System.Net.WebClient. These were previously available via the Async CTP, but weren't brought forward in .Net 4.5 on Windows Phone 8</description>
+    <summary>Adds async/await (TPL) capability to WebClient on the Windows Phone 8 platform</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+  </metadata>
+</package>
