@@ -36,13 +36,6 @@
                     </DataTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="ItemAddedAnimation">
-                <Setter.Value>
-                    <rcc:RadAnimationGroup>
-                        <rcc:RadFadeAnimation StartOpacity="0" EndOpacity="1"/>
-                    </rcc:RadAnimationGroup>
-                </Setter.Value>
-            </Setter>
             <Setter Property="ItemTemplate">
                 <Setter.Value>
                     <DataTemplate>
@@ -85,14 +78,29 @@
                 </RadialGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <Grid x:Name="ContentPanel" Grid.Row="1" ManipulationCompleted="ItemList_ManipulationCompleted" Hold="ContentPanel_Hold">
-            <rcd:RadJumpList Name="ItemList" ItemsSource="{Binding ComicList}" DataVirtualizationMode="OnDemandAutomatic" EmptyContent="LOADING COMICS" ItemTap="ItemList_ItemTap" DataRequested="ItemList_DataRequested">
-                <rcd:RadJumpList.ItemLoadingTemplate>
-                    <DataTemplate>
-                        <rcp:RadBusyIndicator Content="{x:Null}" AnimationStyle="AnimationStyle3" IsRunning="True"/>
-                    </DataTemplate>
-                </rcd:RadJumpList.ItemLoadingTemplate>
-            </rcd:RadJumpList>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Hold="ContentPanel_Hold">
+            <phone:Pivot Name="MainPivot">
+                <phone:PivotItem Margin="0">
+                    <rcd:RadJumpList Name="AllList" ItemsSource="{Binding ComicList}" DataVirtualizationMode="OnDemandAutomatic" EmptyContent="LOADING COMICS" ItemTap="ItemList_ItemTap" DataRequested="ItemList_DataRequested">
+                        <rcd:RadJumpList.ItemAddedAnimation>
+                            <rcc:RadAnimationGroup>
+                                <rcc:RadFadeAnimation StartOpacity="0" EndOpacity="1"/>
+                            </rcc:RadAnimationGroup>
+                        </rcd:RadJumpList.ItemAddedAnimation>
+                        <rcd:RadJumpList.ItemLoadingTemplate>
+                            <DataTemplate>
+                                <rcp:RadBusyIndicator Content="{x:Null}" AnimationStyle="AnimationStyle3" IsRunning="True"/>
+                            </DataTemplate>
+                        </rcd:RadJumpList.ItemLoadingTemplate>
+                    </rcd:RadJumpList>
+                </phone:PivotItem>
+                <phone:PivotItem Margin="0">
+                    <rcd:RadJumpList Name="UnreadList" ItemsSource="{Binding ComicList}" EmptyContent="NO UNREAD" ItemTap="ItemList_ItemTap"/>
+                </phone:PivotItem>
+                <phone:PivotItem Margin="0">
+                    <rcd:RadJumpList Name="FavoritesList" ItemsSource="{Binding ComicList}" EmptyContent="NO FAVORITES" ItemTap="ItemList_ItemTap"/>
+                </phone:PivotItem>
+            </phone:Pivot>
             <Border Name="SortTypeBorder" Opacity="0" VerticalAlignment="Center" IsHitTestVisible="False" CacheMode="BitmapCache">
                 <Border.Background>
                     <SolidColorBrush Color="Black" Opacity=".8"/>

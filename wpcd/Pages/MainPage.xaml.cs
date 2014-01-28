@@ -29,6 +29,10 @@ namespace wpcd.Pages {
 
         public MainPage() {
             InitializeComponent();
+
+            UnreadList.FilterDescriptors.Add(new GenericFilterDescriptor<Comic>(c => c.Unread));
+            FavoritesList.FilterDescriptors.Add(new GenericFilterDescriptor<Comic>(c => c.Favorite));
+
             FilterTimer.Tick += FilterTimer_Tick;
             OverlayGridTimer.Tick += OverlayGridTimer_Tick;
             NotificationTimer.Tick += NotificationTimer_Tick;
@@ -38,6 +42,7 @@ namespace wpcd.Pages {
         private async void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e) {
             if(FirstLoad) {
                 FirstLoad = false;
+                MainPivot.SelectionChanged += MainPivot_SelectionChanged;
                 if(NetworkInterface.GetIsNetworkAvailable()) {
                     if((DataContext as Settings).ComicList.Count == 0) {
                         try {
@@ -84,26 +89,28 @@ namespace wpcd.Pages {
         }
 
         private async void ContentPanel_Hold(object sender, System.Windows.Input.GestureEventArgs e) {
-            switch(currentSort) {
-                case SortType.All:
+            switch(MainPivot.SelectedIndex) {
+                case 0:
                     if(DialogResult.OK == (await RadMessageBox.ShowAsync("MARK AS UNREAD?", MessageBoxButtons.YesNo, "Do you want mark all comics as unread?", vibrate: false)).Result) {
                         foreach(var i in (DataContext as Settings).ComicList) {
                             i.Unread = true;
                         }
                     }
                     break;
-                case SortType.Unread:
+                case 1:
                     if(DialogResult.OK == (await RadMessageBox.ShowAsync("MARK AS READ?", MessageBoxButtons.YesNo, "Do you want mark all comics as read?", vibrate: false)).Result) {
                         foreach(var i in (DataContext as Settings).ComicList) {
                             i.Unread = false;
                         }
+                        UnreadList.RefreshData();
                     }
                     break;
-                case SortType.Favorites:
+                case 2:
                     if(DialogResult.OK == (await RadMessageBox.ShowAsync("UNFAVORITE?", MessageBoxButtons.YesNo, "Do you want to remove all favorites?", vibrate: false)).Result) {
                         foreach(var i in (DataContext as Settings).ComicList) {
                             i.Favorite = false;
                         }
+                        UnreadList.RefreshData();
                     }
                     break;
                 default:
@@ -113,11 +120,6 @@ namespace wpcd.Pages {
         #endregion
 
         #region Itemlist
-        private enum SortType {
-            All, Unread, Favorites
-        }
-        private SortType currentSort = SortType.All;
-
         private void ItemList_ItemTap(object sender, Telerik.Windows.Controls.ListBoxItemTapEventArgs e) {
             (DataContext as Settings).SelectedComic = e.Item.DataContext as Comic;
             (DataContext as Settings).SelectedComic.Unread = false;
@@ -126,12 +128,10 @@ namespace wpcd.Pages {
         }
 
         private void ItemList_DataRequested(object sender, EventArgs e) {
-            if(currentSort != SortType.Unread && currentSort != SortType.Favorites) {
-                if(NetworkInterface.GetIsNetworkAvailable()) {
-                    GetOlderComics();
-                } else {
-                    ShowNotification(NoNetworkMessage, 4000);
-                }
+            if(NetworkInterface.GetIsNetworkAvailable()) {
+                GetOlderComics();
+            } else {
+                ShowNotification(NoNetworkMessage, 4000);
             }
         }
 
@@ -146,7 +146,7 @@ namespace wpcd.Pages {
                         (DataContext as Settings).ComicList.Add(i);
                     }
                     if((DataContext as Settings).ComicList[(DataContext as Settings).ComicList.Count - 1].Number == 1) {
-                        ItemList.DataVirtualizationMode = DataVirtualizationMode.None;
+                        AllList.DataVirtualizationMode = DataVirtualizationMode.None;
                     }
                 }
                 action = NotificationAction.DoNothing;
@@ -156,76 +156,26 @@ namespace wpcd.Pages {
             }
         }
 
-        private void ItemList_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e) {
-            if(e.IsInertial) {
-                if(FilterTimer.IsEnabled) FilterTimer.Stop();
-                if(!ComicWindow.IsOpen) {
-                    if(e.FinalVelocities.LinearVelocity.X > 1000) {
-                        if(currentSort == SortType.All) {
-                            currentSort = SortType.Favorites;
-                            SortTypeText.Text = "FAVORITES";
-                        } else if(currentSort == SortType.Favorites) {
-                            currentSort = SortType.Unread;
-                            SortTypeText.Text = "UNREAD";
-                        } else if(currentSort == SortType.Unread) {
-                            currentSort = SortType.All;
-                            SortTypeText.Text = "ALL";
-                        }
-                    } else if(e.FinalVelocities.LinearVelocity.X < -1000) {
-                        if(currentSort == SortType.All) {
-                            currentSort = SortType.Unread;
-                            SortTypeText.Text = "UNREAD";
-                        } else if(currentSort == SortType.Unread) {
-                            currentSort = SortType.Favorites;
-                            SortTypeText.Text = "FAVORITES";
-                        } else if(currentSort == SortType.Favorites) {
-                            currentSort = SortType.All;
-                            SortTypeText.Text = "ALL";
-                        }
-                    }
-                }
-                SortList(currentSort);
-                RadAnimationManager.Play(SortTypeBorder, new RadFadeAnimation { StartOpacity = 0, EndOpacity = .8, Duration = TimeSpan.FromMilliseconds(200) });
-                FilterTimer.Start();
+        private void MainPivot_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var idx = (sender as Pivot).SelectedIndex;
+            if(FilterTimer.IsEnabled) FilterTimer.Stop();
+            if(idx == 0) {
+                SortTypeText.Text = "ALL";
+            } else if(idx == 1) {
+                SortTypeText.Text = "UNREAD";
+                UnreadList.RefreshData();
+            } else if(idx == 2) {
+                SortTypeText.Text = "FAVORITES";
+                FavoritesList.RefreshData();
             }
+            RadAnimationManager.Play(SortTypeBorder, new RadFadeAnimation { StartOpacity = 0, EndOpacity = .8, Duration = TimeSpan.FromMilliseconds(200) });
+            FilterTimer.Start();
         }
         #endregion
 
         #region Filtering
         private DispatcherTimer FilterTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(1000) };
-
-        private void SortList(SortType sort) {
-            if(ItemList != null) {
-                if(sort == SortType.All) {
-                    ShowAll();
-                } else if(sort == SortType.Unread) {
-                    ShowUnread();
-                } else if(sort == SortType.Favorites) {
-                    ShowFavorites();
-                }
-            }
-        }
-
-        private void ShowAll() {
-            ItemList.EmptyContent = "LOADING COMICS";
-            ItemList.DataVirtualizationMode = DataVirtualizationMode.OnDemandAutomatic;
-            ItemList.FilterDescriptors.Clear();
-        }
-
-        private void ShowUnread() {
-            ItemList.EmptyContent = "NO UNREAD";
-            ItemList.DataVirtualizationMode = DataVirtualizationMode.None;
-            ItemList.FilterDescriptors.Clear();
-            ItemList.FilterDescriptors.Add(new GenericFilterDescriptor<Comic>(c => c.Unread));
-        }
-
-        private void ShowFavorites() {
-            ItemList.EmptyContent = "NO FAVORITES";
-            ItemList.DataVirtualizationMode = DataVirtualizationMode.None;
-            ItemList.FilterDescriptors.Clear();
-            ItemList.FilterDescriptors.Add(new GenericFilterDescriptor<Comic>(c => c.Favorite));
-        }
-
+        
         void FilterTimer_Tick(object sender, EventArgs e) {
             FilterTimer.Stop();
             RadAnimationManager.Play(SortTypeBorder, new RadFadeAnimation { StartOpacity = .8, EndOpacity = 0, Duration = TimeSpan.FromMilliseconds(200) });
@@ -322,10 +272,10 @@ namespace wpcd.Pages {
         }
 
         private void ComicWindow_WindowClosing(object sender, System.ComponentModel.CancelEventArgs e) {
-            if(currentSort == SortType.Unread) {
-                ShowUnread();
-            } else if(currentSort == SortType.Favorites) {
-                ShowFavorites();
+            if(MainPivot.SelectedIndex == 1) {
+                UnreadList.RefreshData();
+            } else if(MainPivot.SelectedIndex == 2) {
+                FavoritesList.RefreshData();
             }
         }
         #endregion
