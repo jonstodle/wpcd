@@ -1,6 +1,7 @@
 ﻿using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Shell;
 using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -41,6 +42,7 @@ namespace UpdateTileCountAgent {
             if(NetworkInterface.GetIsNetworkAvailable()) {
                 try {
                     var comic = await XkcdInterface.GetCurrentComic();
+                    
                     var tileData = new FlipTileData {
                        BackgroundImage = new Uri(comic.ImageUri),
                        WideBackgroundImage = new Uri(comic.ImageUri)
@@ -48,6 +50,14 @@ namespace UpdateTileCountAgent {
                     ShellTile tile = ShellTile.ActiveTiles.First();
                     if(tile != null) {
                         tile.Update(tileData);
+                    }
+
+                    var settings = System.IO.IsolatedStorage.IsolatedStorageSettings.ApplicationSettings;
+                    if(!(bool)settings["IsAppRunning"]) {
+                        var list = (ObservableCollection<Comic>)settings["ComicList"];
+                        if(list[0].Number != comic.Number) {
+                            list.Insert(0, comic);
+                        }
                     }
                 } catch(WebException) { } catch(InvalidOperationException) { }
             }

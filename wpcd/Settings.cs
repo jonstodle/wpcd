@@ -39,6 +39,20 @@ namespace wpcd {
             }
         }
 
+        public bool AppIsRunning {
+            get {
+                if(!settings.Contains("AppIsRunning")) {
+                    settings["AppIsRunning"] = false;
+                }
+                return (bool)settings["AppIsRunning"];
+            }
+
+            set {
+                settings["AppIsRunning"] = value;
+                OnPropertyChanged("AppIsRunning");
+            }
+        }
+
         public void OnPropertyChanged(string propertyName) {
             if(PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
