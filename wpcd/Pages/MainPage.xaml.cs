@@ -18,6 +18,7 @@ using System.Windows.Threading;
 using Telerik.Windows.Controls;
 using Telerik.Windows.Data;
 using Xkcd;
+using System.Collections.ObjectModel;
 
 namespace wpcd.Pages {
     public partial class MainPage : PhoneApplicationPage {
@@ -36,6 +37,11 @@ namespace wpcd.Pages {
             FilterTimer.Tick += FilterTimer_Tick;
             OverlayGridTimer.Tick += OverlayGridTimer_Tick;
             NotificationTimer.Tick += NotificationTimer_Tick;
+
+            AllList.ItemsSource = new ObservableCollection<Comic>();
+            foreach(var i in (DataContext as Settings).ComicList) {
+                (AllList.ItemsSource as ObservableCollection<Comic>).Add(i);
+            }
         }
 
         #region Page
@@ -119,7 +125,7 @@ namespace wpcd.Pages {
         }
         #endregion
 
-        #region Itemlist
+        #region Itemlists
         private void ItemList_ItemTap(object sender, Telerik.Windows.Controls.ListBoxItemTapEventArgs e) {
             (DataContext as Settings).SelectedComic = e.Item.DataContext as Comic;
             (DataContext as Settings).SelectedComic.Unread = false;

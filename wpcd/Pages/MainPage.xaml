@@ -81,7 +81,7 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Hold="ContentPanel_Hold">
             <phone:Pivot Name="MainPivot">
                 <phone:PivotItem Margin="0">
-                    <rcd:RadJumpList Name="AllList" ItemsSource="{Binding ComicList}" DataVirtualizationMode="OnDemandAutomatic" EmptyContent="LOADING COMICS" ItemTap="ItemList_ItemTap" DataRequested="ItemList_DataRequested">
+                    <rcd:RadJumpList Name="AllList" DataVirtualizationMode="OnDemandAutomatic" EmptyContent="LOADING COMICS" ItemAddedAnimationInterval="0:0:0.5" ItemTap="ItemList_ItemTap" DataRequested="ItemList_DataRequested">
                         <rcd:RadJumpList.ItemAddedAnimation>
                             <rcc:RadAnimationGroup>
                                 <rcc:RadFadeAnimation StartOpacity="0" EndOpacity="1"/>

@@ -1,5 +1,5 @@
-﻿<xapCache source="C:\Dev\wpcd\wpcd\Bin\Debug\wpcd_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="29.01.2014 21:17:09">
-  <file source="C:\Dev\wpcd\wpcd\obj\Debug\wpcd.dll" archivePath="wpcd.dll" lastWriteTime="29.01.2014 21:17:07" />
+﻿<xapCache source="C:\Dev\wpcd\wpcd\Bin\Debug\wpcd_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="29.01.2014 21:40:07">
+  <file source="C:\Dev\wpcd\wpcd\obj\Debug\wpcd.dll" archivePath="wpcd.dll" lastWriteTime="29.01.2014 21:40:06" />
   <file source="C:\Dev\wpcd\wpcd\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="21.09.2013 19:22:54" />
   <file source="C:\Dev\wpcd\wpcd\Assets\background.png" archivePath="Assets\background.png" lastWriteTime="08.10.2013 23:15:33" />
   <file source="C:\Dev\wpcd\wpcd\Assets\buttonstar.png" archivePath="Assets\buttonstar.png" lastWriteTime="15.10.2013 19:07:08" />
@@ -37,5 +37,5 @@
   <file source="C:\Dev\wpcd\wpcd\Bin\Debug\System.Windows.Interactivity.dll" archivePath="System.Windows.Interactivity.dll" lastWriteTime="25.09.2012 01:41:02" />
   <file source="C:\Dev\wpcd\Xkcd\Bin\Debug\Newtonsoft.Json.xml" archivePath="Newtonsoft.Json.xml" lastWriteTime="17.11.2013 12:49:15" />
   <file source="C:\Dev\wpcd\wpcd\Assets\Tiles\MediumTile.png" archivePath="Assets\Tiles\MediumTile.png" lastWriteTime="29.10.2013 22:27:54" />
-  <file source="C:\Dev\wpcd\wpcd\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="29.01.2014 21:17:08" />
+  <file source="C:\Dev\wpcd\wpcd\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="29.01.2014 21:40:07" />
 </xapCache>
