@@ -19,6 +19,7 @@ using Telerik.Windows.Controls;
 using Telerik.Windows.Data;
 using Xkcd;
 using System.Collections.ObjectModel;
+using System.Threading;
 
 namespace wpcd.Pages {
     public partial class MainPage : PhoneApplicationPage {
@@ -30,18 +31,23 @@ namespace wpcd.Pages {
 
         public MainPage() {
             InitializeComponent();
+        }
 
-            UnreadList.FilterDescriptors.Add(new GenericFilterDescriptor<Comic>(c => c.Unread));
-            FavoritesList.FilterDescriptors.Add(new GenericFilterDescriptor<Comic>(c => c.Favorite));
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e) {
+            base.OnNavigatedTo(e);
 
             FilterTimer.Tick += FilterTimer_Tick;
             OverlayGridTimer.Tick += OverlayGridTimer_Tick;
             NotificationTimer.Tick += NotificationTimer_Tick;
 
-            AllList.ItemsSource = new ObservableCollection<Comic>();
-            foreach(var i in (DataContext as Settings).ComicList) {
-                (AllList.ItemsSource as ObservableCollection<Comic>).Add(i);
-            }
+            new Thread(() => FilterLists()).Start();
+        }
+
+        private void FilterLists() {
+            Dispatcher.BeginInvoke(() => {
+                UnreadList.FilterDescriptors.Add(new GenericFilterDescriptor<Comic>(c => c.Unread));
+                FavoritesList.FilterDescriptors.Add(new GenericFilterDescriptor<Comic>(c => c.Favorite));
+            });
         }
 
         #region Page
@@ -53,6 +59,7 @@ namespace wpcd.Pages {
                     if((DataContext as Settings).ComicList.Count == 0) {
                         try {
                             (DataContext as Settings).ComicList.Add(await XkcdInterface.GetCurrentComic());
+                            System.Diagnostics.Debug.WriteLine((DataContext as Settings).ComicList.Count);
                         } catch(WebException) {
                             ShowNotification("Comic couldn't be loaded", 4000);
                         }
@@ -278,11 +285,17 @@ namespace wpcd.Pages {
         }
 
         private void ComicWindow_WindowClosing(object sender, System.ComponentModel.CancelEventArgs e) {
-            if(MainPivot.SelectedIndex == 1) {
-                UnreadList.RefreshData();
-            } else if(MainPivot.SelectedIndex == 2) {
-                FavoritesList.RefreshData();
-            }
+            new Thread(() => RefreshData()).Start();
+        }
+
+        private void RefreshData() {
+            Dispatcher.BeginInvoke(() => {
+                if(MainPivot.SelectedIndex == 1) {
+                    UnreadList.RefreshData();
+                } else if(MainPivot.SelectedIndex == 2) {
+                    FavoritesList.RefreshData();
+                }
+            });
         }
         #endregion
 
