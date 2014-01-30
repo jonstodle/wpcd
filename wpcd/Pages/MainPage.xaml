@@ -40,7 +40,7 @@
                 <Setter.Value>
                     <DataTemplate>
                         <Grid Background="White" Height="250" Margin="0,0,0,24">
-                            <rcs:PanAndZoomImage ZoomMode="None" Source="{Binding Image}" Margin="12"/>
+                            <Image Source="{Binding Image}" Margin="12"/>
                             <StackPanel VerticalAlignment="Bottom">
                                 <Border Background="{Binding Unread, Converter={StaticResource BDU}}" VerticalAlignment="Bottom">
                                     <Grid>
@@ -81,7 +81,7 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Hold="ContentPanel_Hold">
             <phone:Pivot Name="MainPivot">
                 <phone:PivotItem Margin="0">
-                    <rcd:RadJumpList Name="AllList" DataVirtualizationMode="OnDemandAutomatic" ItemsSource="{Binding ComicList}" EmptyContent="LOADING COMICS" ItemAddedAnimationInterval="0:0:0.2" ItemTap="ItemList_ItemTap" DataRequested="ItemList_DataRequested">
+                    <rcd:RadJumpList Name="AllList" DataVirtualizationMode="OnDemandAutomatic" ItemsSource="{Binding ComicList}" EmptyContent="LOADING COMICS" ItemAddedAnimationInterval="0:0:0.5" ItemTap="ItemList_ItemTap" DataRequested="ItemList_DataRequested">
                         <rcd:RadJumpList.ItemAddedAnimation>
                             <rcc:RadAnimationGroup>
                                 <rcc:RadFadeAnimation StartOpacity="0" EndOpacity="1"/>
@@ -108,7 +108,7 @@
                 <TextBlock Name="SortTypeText" TextAlignment="Center" Margin="20" FontWeight="Light" FontSize="{StaticResource PhoneFontSizeLarge}"/>
             </Border>
         </Grid>
-        <rcp:RadWindow Name="ComicWindow" Placement="CenterCenter" WindowClosing="ComicWindow_WindowClosing">
+        <rcp:RadWindow Name="ComicWindow" Placement="CenterCenter" WindowOpened="ComicWindow_WindowOpened">
             <rcp:RadWindow.OpenAnimation>
                 <rcc:RadMoveYAnimation x:Name="ComicWindowOpenAnimation" StartY="800" EndY="0" Duration="0:0:0.4">
                     <rcc:RadMoveYAnimation.Easing>

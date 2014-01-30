@@ -115,7 +115,7 @@ namespace wpcd.Pages {
                         foreach(var i in (DataContext as Settings).ComicList) {
                             i.Unread = false;
                         }
-                        UnreadList.RefreshData();
+                        RefreshFiltering();
                     }
                     break;
                 case 2:
@@ -123,7 +123,7 @@ namespace wpcd.Pages {
                         foreach(var i in (DataContext as Settings).ComicList) {
                             i.Favorite = false;
                         }
-                        UnreadList.RefreshData();
+                        RefreshFiltering();
                     }
                     break;
                 default:
@@ -176,10 +176,10 @@ namespace wpcd.Pages {
                 SortTypeText.Text = "ALL";
             } else if(idx == 1) {
                 SortTypeText.Text = "UNREAD";
-                UnreadList.RefreshData();
+                RefreshFiltering();
             } else if(idx == 2) {
                 SortTypeText.Text = "FAVORITES";
-                FavoritesList.RefreshData();
+                RefreshFiltering();
             }
             RadAnimationManager.Play(SortTypeBorder, new RadFadeAnimation { StartOpacity = 0, EndOpacity = .8, Duration = TimeSpan.FromMilliseconds(200) });
             FilterTimer.Start();
@@ -188,7 +188,15 @@ namespace wpcd.Pages {
 
         #region Filtering
         private DispatcherTimer FilterTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(1000) };
-        
+
+        private void RefreshFiltering() {
+            if(MainPivot.SelectedIndex == 1) {
+                new Thread(() => Dispatcher.BeginInvoke(() => UnreadList.RefreshData())).Start();
+            } else if(MainPivot.SelectedIndex == 2) {
+                new Thread(() => Dispatcher.BeginInvoke(() => FavoritesList.RefreshData())).Start();
+            }
+        }
+
         void FilterTimer_Tick(object sender, EventArgs e) {
             FilterTimer.Stop();
             RadAnimationManager.Play(SortTypeBorder, new RadFadeAnimation { StartOpacity = .8, EndOpacity = 0, Duration = TimeSpan.FromMilliseconds(200) });
@@ -221,6 +229,7 @@ namespace wpcd.Pages {
             var tag = (sender as RadImageButton).Tag as string;
             if(tag == "favorite") {
                 (DataContext as Settings).SelectedComic.Favorite = !(DataContext as Settings).SelectedComic.Favorite;
+                RefreshFiltering();
             } else if(tag == "link") {
                 Clipboard.SetText("http://xkcd.com/" + (DataContext as Settings).SelectedComic.Number.ToString());
                 ShowNotification("Link copied to the clipboard");
@@ -284,18 +293,8 @@ namespace wpcd.Pages {
             ComicImage.DoubleTapOccured = false;
         }
 
-        private void ComicWindow_WindowClosing(object sender, System.ComponentModel.CancelEventArgs e) {
-            new Thread(() => RefreshData()).Start();
-        }
-
-        private void RefreshData() {
-            Dispatcher.BeginInvoke(() => {
-                if(MainPivot.SelectedIndex == 1) {
-                    UnreadList.RefreshData();
-                } else if(MainPivot.SelectedIndex == 2) {
-                    FavoritesList.RefreshData();
-                }
-            });
+        private void ComicWindow_WindowOpened(object sender, EventArgs e) {
+            RefreshFiltering();
         }
         #endregion
 
