@@ -209,7 +209,7 @@ namespace wpcd.Pages {
 
         private void WindowGrid_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e) {
             if(e.IsInertial) {
-                if(ComicImage.Zoom == 1 || OverlayGrid.Visibility == Visibility.Visible) {
+                if(ComicImage.Zoom == 1 || OverlayGrid.Opacity > 0) {
                     if(GestureHelper.GetDirection(e.FinalVelocities.LinearVelocity.X, e.FinalVelocities.LinearVelocity.Y) == GestureHelper.Direction.Down) {
                         ComicWindow.IsOpen = false;
                     }
@@ -221,7 +221,7 @@ namespace wpcd.Pages {
             ComicImage.Zoom = 1;
             ComicImage.Pan = new Point(0, 0);
             OverlayGrid.Opacity = 0;
-            OverlayGrid.Visibility = System.Windows.Visibility.Collapsed;
+            OverlayGrid.IsHitTestVisible = false;
         }
 
         private async void RadImageButton_Tap(object sender, System.Windows.Input.GestureEventArgs e) {
@@ -280,13 +280,11 @@ namespace wpcd.Pages {
             OverlayGridTimer.Stop();
             if(!ComicImage.DoubleTapOccured) {
                 if(this.sender == ComicImage) {
-                    OverlayGrid.Visibility = System.Windows.Visibility.Visible;
+                    OverlayGrid.IsHitTestVisible = true;
                     RadAnimationManager.Play(OverlayGrid, new RadFadeAnimation { StartOpacity = 0, EndOpacity = 1, Duration = new Duration(TimeSpan.FromMilliseconds(200)) });
                 } else {
                     var ani = new RadFadeAnimation { StartOpacity = 1, EndOpacity = 0, Duration = new Duration(TimeSpan.FromMilliseconds(200)) };
-                    ani.Ended += (sndr, args) => {
-                        OverlayGrid.Visibility = System.Windows.Visibility.Collapsed;
-                    };
+                    OverlayGrid.IsHitTestVisible = false;
                     RadAnimationManager.Play(OverlayGrid, ani);
                 }
             }

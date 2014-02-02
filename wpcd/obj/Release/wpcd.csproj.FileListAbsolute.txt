@@ -8,7 +8,6 @@ C:\Dev\wpcd\wpcd\Bin\Release\wpcd.dll
 C:\Dev\wpcd\wpcd\Bin\Release\wpcd.pdb
 C:\Dev\wpcd\wpcd\Bin\Release\AppManifest.xaml
 C:\Dev\wpcd\wpcd\Bin\Release\Properties\WMAppManifest.xml
-C:\Dev\wpcd\wpcd\Bin\Release\wpcd_Release_AnyCPU.xap
 C:\Dev\wpcd\wpcd\Bin\Release\DynamicOrientationChanges.dll
 C:\Dev\wpcd\wpcd\Bin\Release\Microsoft.Phone.Controls.Toolkit.dll
 C:\Dev\wpcd\wpcd\Bin\Release\Newtonsoft.Json.dll
@@ -100,3 +99,4 @@ C:\Dev\wpcd\wpcd\Bin\Release\UpdateTileCountAgent.dll
 C:\Dev\wpcd\wpcd\Bin\Release\Xkcd.dll
 C:\Dev\wpcd\wpcd\Bin\Release\UpdateTileCountAgent.pdb
 C:\Dev\wpcd\wpcd\Bin\Release\Xkcd.pdb
+C:\Dev\wpcd\wpcd\Bin\Release\wpcd.xap

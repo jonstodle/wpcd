@@ -19,7 +19,7 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>wpcd_$(Configuration)_$(Platform).xap</XapFilename>
+    <XapFilename>wpcd.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
     <SilverlightAppEntry>wpcd.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>

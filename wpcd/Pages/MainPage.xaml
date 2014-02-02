@@ -121,7 +121,7 @@
             </rcp:RadWindow.CloseAnimation>
             <Grid Name="WindowGrid" Height="{Binding ActualHeight, ElementName=LayoutRoot}" Width="{Binding ActualWidth, ElementName=LayoutRoot}" Background="White" ManipulationCompleted="WindowGrid_ManipulationCompleted">
                 <local:CustomPanAndZoomImage Name="ComicImage" Margin="12" Source="{Binding SelectedComic.Image}" ZoomMode="Free" Tap="OverlayToggleTap"/>
-                <Grid Name="OverlayGrid" Visibility="Collapsed" CacheMode="BitmapCache" Tap="OverlayToggleTap">
+                <Grid Name="OverlayGrid" Opacity="0" CacheMode="BitmapCache" Tap="OverlayToggleTap">
                     <Grid.Background>
                         <SolidColorBrush Color="Black" Opacity=".8"/>
                     </Grid.Background>
