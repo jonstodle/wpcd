@@ -81,11 +81,9 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Hold="ContentPanel_Hold">
             <phone:Pivot Name="MainPivot">
                 <phone:PivotItem Margin="0">
-                    <rcd:RadJumpList Name="AllList" DataVirtualizationMode="OnDemandAutomatic" ItemsSource="{Binding ComicList}" EmptyContent="LOADING COMICS" ItemAddedAnimationInterval="0:0:0.5" ItemTap="ItemList_ItemTap" DataRequested="ItemList_DataRequested">
+                    <rcd:RadJumpList Name="AllList" DataVirtualizationMode="OnDemandAutomatic" ItemsSource="{Binding ComicList}" EmptyContent="LOADING COMICS" ItemTap="ItemList_ItemTap" DataRequested="ItemList_DataRequested">
                         <rcd:RadJumpList.ItemAddedAnimation>
-                            <rcc:RadAnimationGroup>
                                 <rcc:RadFadeAnimation StartOpacity="0" EndOpacity="1"/>
-                            </rcc:RadAnimationGroup>
                         </rcd:RadJumpList.ItemAddedAnimation>
                         <rcd:RadJumpList.ItemLoadingTemplate>
                             <DataTemplate>
@@ -95,10 +93,18 @@
                     </rcd:RadJumpList>
                 </phone:PivotItem>
                 <phone:PivotItem Margin="0">
-                    <rcd:RadJumpList Name="UnreadList" ItemsSource="{Binding ComicList}" EmptyContent="NO UNREAD" ItemTap="ItemList_ItemTap"/>
+                    <rcd:RadJumpList Name="UnreadList" EmptyContent="NO UNREAD" ItemsSource="{Binding ComicList}" ItemTap="ItemList_ItemTap">
+                        <rcd:RadJumpList.ItemRemovedAnimation>
+                            <rcc:RadFadeAnimation StartOpacity="1" EndOpacity="0" Duration="0"/>
+                        </rcd:RadJumpList.ItemRemovedAnimation>
+                    </rcd:RadJumpList>
                 </phone:PivotItem>
                 <phone:PivotItem Margin="0">
-                    <rcd:RadJumpList Name="FavoritesList" ItemsSource="{Binding ComicList}" EmptyContent="NO FAVORITES" ItemTap="ItemList_ItemTap"/>
+                    <rcd:RadJumpList Name="FavoritesList" EmptyContent="NO FAVORITES" ItemsSource="{Binding ComicList}" ItemTap="ItemList_ItemTap">
+                        <rcd:RadJumpList.ItemRemovedAnimation>
+                            <rcc:RadFadeAnimation StartOpacity="1" EndOpacity="0" Duration="0"/>
+                        </rcd:RadJumpList.ItemRemovedAnimation>
+                    </rcd:RadJumpList>
                 </phone:PivotItem>
             </phone:Pivot>
             <Border Name="SortTypeBorder" Opacity="0" VerticalAlignment="Center" IsHitTestVisible="False" CacheMode="BitmapCache">

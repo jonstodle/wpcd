@@ -147,7 +147,6 @@ C:\Dev\wpcd\wpcd\Bin\Debug\wpcd.dll
 C:\Dev\wpcd\wpcd\Bin\Debug\wpcd.pdb
 C:\Dev\wpcd\wpcd\Bin\Debug\AppManifest.xaml
 C:\Dev\wpcd\wpcd\Bin\Debug\Properties\WMAppManifest.xml
-C:\Dev\wpcd\wpcd\Bin\Debug\wpcd_Debug_AnyCPU.xap
 C:\Dev\wpcd\wpcd\Bin\Debug\DynamicOrientationChanges.dll
 C:\Dev\wpcd\wpcd\Bin\Debug\Microsoft.Phone.Controls.Toolkit.dll
 C:\Dev\wpcd\wpcd\Bin\Debug\UpdateTileCountAgent.dll
@@ -228,3 +227,4 @@ C:\Dev\wpcd\wpcd\obj\Debug\wpcd.csproj.GenerateResource.Cache
 C:\Dev\wpcd\wpcd\obj\Debug\wpcd.dll
 C:\Dev\wpcd\wpcd\obj\Debug\wpcd.pdb
 C:\Dev\wpcd\wpcd\obj\Debug\XapCacheFile.xml
+C:\Dev\wpcd\wpcd\Bin\Debug\wpcd.xap
