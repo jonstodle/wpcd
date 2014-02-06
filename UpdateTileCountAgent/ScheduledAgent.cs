@@ -52,13 +52,13 @@ namespace UpdateTileCountAgent {
                         tile.Update(tileData);
                     }
 
-                    var settings = System.IO.IsolatedStorage.IsolatedStorageSettings.ApplicationSettings;
-                    if(!(bool)settings["IsAppRunning"]) {
-                        var list = (ObservableCollection<Comic>)settings["ComicList"];
-                        if(list[0].Number != comic.Number) {
-                            list.Insert(0, comic);
-                        }
-                    }
+                    //var settings = System.IO.IsolatedStorage.IsolatedStorageSettings.ApplicationSettings;
+                    //if(!(bool)settings["IsAppRunning"]) {
+                    //    var list = (ObservableCollection<Comic>)settings["ComicList"];
+                    //    if(list[0].Number != comic.Number) {
+                    //        list.Insert(0, comic);
+                    //    }
+                    //}
                 } catch(WebException) { } catch(InvalidOperationException) { }
             }
             //NotifyComplete();
