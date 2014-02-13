@@ -61,7 +61,7 @@ namespace UpdateTileCountAgent {
                     //}
                 } catch(WebException) { } catch(InvalidOperationException) { }
             }
-            //NotifyComplete();
+            NotifyComplete();
         }
     }
 }

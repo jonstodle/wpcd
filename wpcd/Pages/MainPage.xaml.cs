@@ -70,7 +70,9 @@ namespace wpcd.Pages {
                         var task = new PeriodicTask(BackgroundTaskName) {
                             Description = "Gets the number of new comics from xkcd"
                         };
-                        ScheduledActionService.Add(task);
+                        try {
+                            ScheduledActionService.Add(task);
+                        } catch(InvalidOperationException) { }
                     }
                 } else {
                     ShowNotification(NoNetworkMessage, 4000);
