@@ -14,17 +14,17 @@
 // limitations under the License.
 //
 
+using Microsoft.Phone.Shell;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using Microsoft.Phone.Shell;
-using System.Windows.Resources;
 using System.IO;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Markup;
+using System.Windows.Media;
+using System.Windows.Resources;
 
 //
 // This nifty class will help override the runtime resources used in the app's

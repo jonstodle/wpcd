@@ -1,7 +1,6 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Net.NetworkInformation;
 using Microsoft.Phone.Scheduler;
-using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Media.PhoneExtensions;
@@ -9,7 +8,7 @@ using System;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Net;
-using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -18,8 +17,6 @@ using System.Windows.Threading;
 using Telerik.Windows.Controls;
 using Telerik.Windows.Data;
 using Xkcd;
-using System.Collections.ObjectModel;
-using System.Threading;
 
 namespace wpcd.Pages {
     public partial class MainPage : PhoneApplicationPage {
