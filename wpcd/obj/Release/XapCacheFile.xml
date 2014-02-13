@@ -1,5 +1,5 @@
-﻿<xapCache source="C:\Dev\wpcd\wpcd\Bin\Release\wpcd.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="13.02.2014 23:40:14">
-  <file source="C:\Dev\wpcd\wpcd\obj\Release\wpcd.dll" archivePath="wpcd.dll" lastWriteTime="13.02.2014 23:40:12" />
+﻿<xapCache source="C:\Dev\wpcd\wpcd\Bin\Release\wpcd.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="13.02.2014 23:41:51">
+  <file source="C:\Dev\wpcd\wpcd\obj\Release\wpcd.dll" archivePath="wpcd.dll" lastWriteTime="13.02.2014 23:41:49" />
   <file source="C:\Dev\wpcd\wpcd\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="21.09.2013 19:22:54" />
   <file source="C:\Dev\wpcd\wpcd\Assets\background.png" archivePath="Assets\background.png" lastWriteTime="08.10.2013 23:15:33" />
   <file source="C:\Dev\wpcd\wpcd\Assets\buttonstar.png" archivePath="Assets\buttonstar.png" lastWriteTime="15.10.2013 19:07:08" />
@@ -41,5 +41,5 @@
   <file source="C:\Dev\wpcd\wpcd\Bin\Release\Telerik.Windows.Data.xml" archivePath="Telerik.Windows.Data.xml" lastWriteTime="18.07.2013 13:32:02" />
   <file source="C:\Dev\wpcd\Xkcd\Bin\Release\Newtonsoft.Json.xml" archivePath="Newtonsoft.Json.xml" lastWriteTime="17.11.2013 12:49:15" />
   <file source="C:\Dev\wpcd\wpcd\Assets\Tiles\MediumTile.png" archivePath="Assets\Tiles\MediumTile.png" lastWriteTime="29.10.2013 22:27:54" />
-  <file source="C:\Dev\wpcd\wpcd\Bin\Release\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="13.02.2014 23:40:13" />
+  <file source="C:\Dev\wpcd\wpcd\Bin\Release\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="13.02.2014 23:41:50" />
 </xapCache>
