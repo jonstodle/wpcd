@@ -1,5 +1,5 @@
-﻿<xapCache source="C:\Dev\wpcd\wpcd\Bin\Release\wpcd.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="13.02.2014 23:37:26">
-  <file source="C:\Dev\wpcd\wpcd\obj\Release\wpcd.dll" archivePath="wpcd.dll" lastWriteTime="13.02.2014 23:37:25" />
+﻿<xapCache source="C:\Dev\wpcd\wpcd\Bin\Release\wpcd.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="13.02.2014 23:40:14">
+  <file source="C:\Dev\wpcd\wpcd\obj\Release\wpcd.dll" archivePath="wpcd.dll" lastWriteTime="13.02.2014 23:40:12" />
   <file source="C:\Dev\wpcd\wpcd\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="21.09.2013 19:22:54" />
   <file source="C:\Dev\wpcd\wpcd\Assets\background.png" archivePath="Assets\background.png" lastWriteTime="08.10.2013 23:15:33" />
   <file source="C:\Dev\wpcd\wpcd\Assets\buttonstar.png" archivePath="Assets\buttonstar.png" lastWriteTime="15.10.2013 19:07:08" />
@@ -30,9 +30,9 @@
   <file source="C:\Dev\wpcd\wpcd\Bin\Release\Telerik.Windows.Controls.Primitives.dll" archivePath="Telerik.Windows.Controls.Primitives.dll" lastWriteTime="18.07.2013 13:31:36" />
   <file source="C:\Dev\wpcd\wpcd\Bin\Release\Telerik.Windows.Core.dll" archivePath="Telerik.Windows.Core.dll" lastWriteTime="18.07.2013 13:31:32" />
   <file source="C:\Dev\wpcd\wpcd\Bin\Release\Telerik.Windows.Data.dll" archivePath="Telerik.Windows.Data.dll" lastWriteTime="18.07.2013 13:32:02" />
-  <file source="C:\Dev\wpcd\UpdateTileCountAgent\Bin\Release\UpdateTileCountAgent.dll" archivePath="UpdateTileCountAgent.dll" lastWriteTime="13.02.2014 23:37:24" />
+  <file source="C:\Dev\wpcd\UpdateTileCountAgent\Bin\Release\UpdateTileCountAgent.dll" archivePath="UpdateTileCountAgent.dll" lastWriteTime="13.02.2014 23:40:12" />
   <file source="C:\Dev\wpcd\packages\WP8AsyncWebClient.1.0.1\lib\wp8\WP8AsyncWebClient.dll" archivePath="WP8AsyncWebClient.dll" lastWriteTime="08.10.2013 18:49:53" />
-  <file source="C:\Dev\wpcd\Xkcd\Bin\Release\Xkcd.dll" archivePath="Xkcd.dll" lastWriteTime="13.02.2014 23:37:24" />
+  <file source="C:\Dev\wpcd\Xkcd\Bin\Release\Xkcd.dll" archivePath="Xkcd.dll" lastWriteTime="13.02.2014 23:40:11" />
   <file source="C:\Dev\wpcd\Xkcd\Bin\Release\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="17.11.2013 12:49:13" />
   <file source="C:\Dev\wpcd\wpcd\Bin\Release\System.Windows.Interactivity.dll" archivePath="System.Windows.Interactivity.dll" lastWriteTime="25.09.2012 01:41:02" />
   <file source="C:\Dev\wpcd\wpcd\Bin\Release\Telerik.Windows.Controls.Data.xml" archivePath="Telerik.Windows.Controls.Data.xml" lastWriteTime="18.07.2013 13:32:04" />
@@ -41,5 +41,5 @@
   <file source="C:\Dev\wpcd\wpcd\Bin\Release\Telerik.Windows.Data.xml" archivePath="Telerik.Windows.Data.xml" lastWriteTime="18.07.2013 13:32:02" />
   <file source="C:\Dev\wpcd\Xkcd\Bin\Release\Newtonsoft.Json.xml" archivePath="Newtonsoft.Json.xml" lastWriteTime="17.11.2013 12:49:15" />
   <file source="C:\Dev\wpcd\wpcd\Assets\Tiles\MediumTile.png" archivePath="Assets\Tiles\MediumTile.png" lastWriteTime="29.10.2013 22:27:54" />
-  <file source="C:\Dev\wpcd\wpcd\Bin\Release\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="13.02.2014 23:37:25" />
+  <file source="C:\Dev\wpcd\wpcd\Bin\Release\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="13.02.2014 23:40:13" />
 </xapCache>

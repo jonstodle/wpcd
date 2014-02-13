@@ -217,26 +217,17 @@ namespace Xkcd {
             get {
                 try {
                     using(var isoStore = IsolatedStorageFile.GetUserStoreForApplication()) {
-                        System.Diagnostics.Debug.WriteLine("Opened isoStore");
                         if(isoStore.FileExists(Number.ToString() + ".jpg")) {
-                            System.Diagnostics.Debug.WriteLine("File exists");
                             using(var isoStoreFs = new IsolatedStorageFileStream(Number.ToString() + ".jpg", System.IO.FileMode.Open, isoStore)) {
-                                System.Diagnostics.Debug.WriteLine("Opened filestream");
                                 var bi = new BitmapImage();
                                 bi.SetSource(isoStoreFs);
-                                System.Diagnostics.Debug.WriteLine("Returning image");
                                 return bi;
                             }
                         } else {
-                            System.Diagnostics.Debug.WriteLine("Must download image");
                             DownloadImage(ImageUri);
                         }
                     }
-                } catch(Exception ex) {
-                    System.Diagnostics.Debug.WriteLine("Image failed");
-                    System.Diagnostics.Debug.WriteLine(ex.Message);
-                }
-                System.Diagnostics.Debug.WriteLine("Nothing to return");
+                } catch(Exception ex) { }
                 return null;
             }
         }
@@ -273,27 +264,18 @@ namespace Xkcd {
 
         private async void DownloadImage(string uri) {
             try {
-                System.Diagnostics.Debug.WriteLine("Trying to load image");
                 var client = new WebClient();
                 var bi = new BitmapImage();
                 bi.SetSource(await client.OpenReadTaskAsync(uri));
                 var wb = new WriteableBitmap(bi);
-                System.Diagnostics.Debug.WriteLine("Created WB");
                 using(var isoStore = IsolatedStorageFile.GetUserStoreForApplication()) {
-                    System.Diagnostics.Debug.WriteLine("Got isoStore");
                     if(!isoStore.FileExists(Number.ToString() + ".jpg")) {
-                        System.Diagnostics.Debug.WriteLine("File doesn't exist");
                         using(var isoStoreFs = new IsolatedStorageFileStream(Number.ToString() + ".jpg", System.IO.FileMode.Create, isoStore)) {
-                            System.Diagnostics.Debug.WriteLine("Created filestream");
                             wb.SaveJpeg(isoStoreFs, wb.PixelWidth, wb.PixelHeight, 0, 100);
-                            System.Diagnostics.Debug.WriteLine("Saved image");
                         }
-                    } else {
-                        System.Diagnostics.Debug.WriteLine("File exists");
-                    }
+                    } else { }
                 }
                 OnPropertyChanged("Image");
-                System.Diagnostics.Debug.WriteLine("Notified image downloaded");
             } catch(Exception) { }
 
         }
